@@ -1,7 +1,7 @@
-package com.yotsume.managerapp.service;
+package com.yotsume.catalogue.service;
 
-import com.yotsume.managerapp.entity.Product;
-import com.yotsume.managerapp.repository.ProductRepository;
+import com.yotsume.catalogue.entity.Product;
+import com.yotsume.catalogue.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

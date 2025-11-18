@@ -1,4 +1,4 @@
-package com.yotsume.catalogueservice;
+package com.yotsume.catalogue;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

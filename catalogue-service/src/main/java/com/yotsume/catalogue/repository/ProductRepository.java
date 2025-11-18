@@ -1,6 +1,6 @@
-package com.yotsume.managerapp.repository;
+package com.yotsume.catalogue.repository;
 
-import com.yotsume.managerapp.entity.Product;
+import com.yotsume.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
