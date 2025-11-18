@@ -21,8 +21,9 @@ public class ProductsCatalogueRestController {
     private final ProductService productService;
 
     @GetMapping
-    public List<Product> findProducts() {
-        return productService.findAllProducts();
+    public Iterable<Product> findProducts(
+            @RequestParam(name = "filter", required = false) String filter) {
+        return productService.findAllProducts(filter);
     }
 
     @PostMapping
