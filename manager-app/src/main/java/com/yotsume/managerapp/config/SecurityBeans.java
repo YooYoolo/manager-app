@@ -25,10 +25,10 @@ public class SecurityBeans {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests ->
                         authorizeHttpRequests.anyRequest().hasRole("MANAGER"))
+                .oauth2Client(Customizer.withDefaults())
                 .oauth2Login(Customizer.withDefaults())
                 .build();
     }
-
     @Bean
     public OAuth2UserService<OidcUserRequest, OidcUser> oAuth2UserService(){
         OidcUserService oidcUserService = new OidcUserService();
@@ -36,13 +36,13 @@ public class SecurityBeans {
             OidcUser oidcUser = oidcUserService.loadUser(userRequest);
             List<GrantedAuthority> authorities =
                     Stream.concat(oidcUser.getAuthorities().stream(),
-                        Optional.ofNullable(oidcUser.getClaimAsStringList("groups"))
-                            .orElseGet(List::of)
-                            .stream()
-                            .filter(role -> role.startsWith("ROLE_"))
-                            .map(SimpleGrantedAuthority::new)
-                            .map(GrantedAuthority.class::cast))
-                        .toList();
+                                    Optional.ofNullable(oidcUser.getClaimAsStringList("groups"))
+                                            .orElseGet(List::of)
+                                            .stream()
+                                            .filter(role -> role.startsWith("ROLE_"))
+                                            .map(SimpleGrantedAuthority::new)
+                                            .map(GrantedAuthority.class::cast))
+                            .toList();
             return new DefaultOidcUser(authorities, oidcUser.getIdToken(), oidcUser.getUserInfo());
         };
     }

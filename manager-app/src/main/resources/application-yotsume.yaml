@@ -2,6 +2,7 @@ yotsume:
   services:
     catalogue:
       uri: http://localhost:8081
+      registration-id: keycloak
 
 spring:
   datasource:

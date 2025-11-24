@@ -5,9 +5,12 @@ import com.yotsume.managerapp.client.ProductRestClient;
 import com.yotsume.managerapp.controller.payload.NewProductPayload;
 import com.yotsume.managerapp.entity.Product;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,7 +23,6 @@ public class ProductsController {
     public String getProductsList(
             Model model,
             @RequestParam(name = "filter", required = false) String filter) {
-
         model.addAttribute("products",
                 this.productRestClient.findAllProducts(filter));
         model.addAttribute("filter", filter);
